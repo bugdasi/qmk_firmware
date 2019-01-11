@@ -35,6 +35,7 @@ enum custom_keycodes {
   MC_CPROD,
   MC_CLEFT,
   MC_CRGHT,
+  MC_CTAB,
   MC_DELK,
   MC_ENTO,
 };
@@ -81,7 +82,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ,-----------------------------------------.             ,-----------------------------------------.
  * | ESC  |  F1  |  F2  |  F3  |  F4  |  F5  |             |  F6  |  F7  |  F8  |  F9  |  F10 |   -  |
  * |------+------+------+------+------+------|             |------+------+------+------+------+------|
- * | Tab  |  F11 |  F12 |  End |   R  |   T  |             | CtrlY|   U  |   I  | EntO |   ↑  |   @  |
+ * |CtlTab|  F11 |  F12 |  End |   R  |   T  |             | CtrlY|   U  |   I  | EntO |   ↑  |   @  |
  * |------+------+------+------+------+------|             |------+------+------+------+------+------|
  * | Emcs | Home | CtrlS|  Del |   →  |   G  |             |  BS  |   J  | DelK |   L  |   ;  |   :  |
  * |------+------+------+------+------+------+-------------+------+------+------+------+------+------|
@@ -92,7 +93,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
 [_LOWER] = LAYOUT( \
   _______, KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,                     KC_F6,       KC_F7,   KC_F8,   KC_F9,   KC_F10,  _______, \
-  _______, KC_F11,  KC_F12,  KC_END,  KC_R,    KC_T,                      MC_CTRLY,    KC_U,    KC_I,    MC_ENTO, KC_UP,   _______, \
+  MC_CTAB, KC_F11,  KC_F12,  KC_END,  KC_R,    KC_T,                      MC_CTRLY,    KC_U,    KC_I,    MC_ENTO, KC_UP,   _______, \
   _______, KC_HOME, MC_CTRLS,KC_DEL,  KC_RGHT, KC_G,                      KC_BSPC,     KC_J,    MC_DELK, KC_L,    _______, _______, \
   _______, MC_CTRLZ,MC_CTRLX,MC_CTRLC,MC_CTRLV,KC_LEFT, _______, _______, KC_DOWN,     KC_M,    MC_CCOMA,MC_CPROD,_______, _______, \
                     _______, _______, _______, _______, _______, _______, _______, _______, _______, _______\
@@ -100,22 +101,22 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 /* Raise
  * ,-----------------------------------------.             ,-----------------------------------------.
- * | ESC  |   !  |   "  |   #  |   $  |   %  |             |   &  |   '  |   (  |   )  |   ^  |   ~  |
+ * | ESC  |   !  |   "  |   #  |   $  |   %  |             |   &  |   '  |   (  |   )  |   ^  |   =  |
  * |------+------+------+------+------+------|             |------+------+------+------+------+------|
- * | Tab  |   Q  | CtrlW|  End |   R  |   T  |             |   ¥  |   =  |   [  |   ]  | PgUp |   `  |
+ * | Tab  |   Q  | CtrlW|  End |   R  |   ~  |             |   ¥  |   μ  |   [  |   ]  | PgUp |   `  |
  * |------+------+------+------+------+------|             |------+------+------+------+------+------|
- * | Emcs | Home |   S  |  Del | Ctrl→|   G  |             |  BS  |   J  |   {  |   }  |   +  |   *  |
+ * | Emcs | Home | CtrlS|  Del | Ctrl→|   G  |             |  BS  |   J  |   {  |   }  |   +  |   *  |
  * |------+------+------+------+------+------+-------------+------+------+------+------+------+------|
- * | Shift|   Z  |   X  |   C  |   V  | Ctrl←| Bksp |  Del | PgDn |   M  |   <  |   >  |   ?  |   _  |
+ * | Shift| CtrlZ| CtrlX| CtrlC| CtrlV| Ctrl←| Bksp |  Del | PgDn |   M  |   <  |   >  |   ?  |   _  |
  * `-------------+------+------+------+------+------+------+------+------+------+------+-------------'
  *               |  GUI |  Alt |Lower |Space | Ctrl |Enter |Space | Raise|  Alt |  GUI |
  *               `---------------------------------------------------------------------'
  */
 [_RAISE] = LAYOUT( \
-  _______, JP_EXLM, JP_DQT,  JP_HASH, JP_DLR,  JP_PERC,                    JP_AMPR, JP_QUOT, JP_LPRN, JP_RPRN, KC_CIRC, JP_TILD, \
-  _______, KC_Q,    KC_W,    KC_END,  KC_R,    KC_T,                       JP_YEN,  JP_EQL,  JP_LBRC, JP_RBRC, KC_PGUP, JP_GRV, \
-  _______, KC_HOME, KC_S,    KC_DEL,  MC_CRGHT,KC_G,                       KC_BSPC, KC_J,    JP_LCBR, JP_RCBR, JP_PLUS, JP_ASTR, \
-  _______, KC_Z,    KC_X,    KC_C,    KC_V,    MC_CLEFT, _______, _______, KC_PGDN, KC_M,    JP_LT,   JP_GT,   JP_QUES, JP_UNDS, \
+  _______, JP_EXLM, JP_DQT,  JP_HASH, JP_DLR,  JP_PERC,                    JP_AMPR, JP_QUOT, JP_LPRN, JP_RPRN, KC_CIRC, JP_EQL, \
+  KC_TAB,  KC_Q,    MC_CTRLW,KC_END,  KC_R,    JP_TILD,                    JP_YEN,  JP_PIPE, JP_LBRC, JP_RBRC, KC_PGUP, JP_GRV, \
+  _______, KC_HOME, MC_CTRLS,KC_DEL,  MC_CRGHT,KC_G,                       KC_BSPC, KC_J,    JP_LCBR, JP_RCBR, JP_PLUS, JP_ASTR, \
+  _______, MC_CTRLZ,MC_CTRLX,MC_CTRLC,MC_CTRLV,MC_CLEFT, _______, _______, KC_PGDN, KC_M,    JP_LT,   JP_GT,   JP_QUES, JP_UNDS, \
                     _______, _______, _______, _______,  _______, _______, _______, _______, _______, _______\
 ),
 
@@ -237,6 +238,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       case MC_CTRLS:
         if (record->event.pressed) {
           SEND_STRING(SS_DOWN(X_LCTRL) SS_TAP(X_S) SS_UP(X_LCTRL));
+        }
+        break;
+
+      case MC_CTAB:
+        if (record->event.pressed) {
+          SEND_STRING(SS_DOWN(X_LCTRL) SS_TAP(X_TAB) SS_UP(X_LCTRL));
         }
         break;
 

@@ -20,6 +20,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include "config_common.h"
 
+#define RETRO_TAPPING
 #define USE_SERIAL
 
 /* Select hand configuration */

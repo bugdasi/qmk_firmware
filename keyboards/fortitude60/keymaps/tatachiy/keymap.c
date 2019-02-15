@@ -78,14 +78,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------+-------------+------+------+------+------+------+------|
  * | Shift|   Z  |   X  |   C  |   V  |   B  | Bksp |  Del |   N  |   M  |   ,  |   .  |   /  |BSL/Sf|
  * `-------------+------+------+------+------+------+------+------+------+------+------+-------------'
- *               |  GUI |  Alt | Raise| Lower| Space|Space |Lower | Raise|  Alt |  GUI |
+ *               |  GUI |  Alt | Enter| Lower| Raise|Raise |Lower | Enter|  Alt |  GUI |
  *               `---------------------------------------------------------------------'
  */
 [_QWERTY] = LAYOUT( \
   KC_ESC,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                      KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    JP_MINS, \
   KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,                      KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    JP_AT, \
   KC_LCTRL,KC_A,    KC_S,    KC_D,    KC_F,    KC_G,                      KC_H,    KC_J,    KC_K,    KC_L,    JP_SCLN, JP_COLN, \
-  KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,   KC_BSPC,  KC_DEL,  KC_N,    KC_M,    JP_COMM, JP_DOT,  JP_SLSH, SFT_BSLS, \
+  KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,   KC_BSPC,  KC_BSPC, KC_N,    KC_M,    JP_COMM, JP_DOT,  JP_SLSH, SFT_BSLS, \
                     KC_LGUI, KC_LALT, CTL_ENT, LOWER_L,RAISE_L,  RAISE_R, LOWER_R, CTL_ENT, KC_RALT, KC_RGUI\
 ),
 
@@ -99,56 +99,56 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------+-------------+------+------+------+------+------+------|
  * | Shift|   Z  |   X  |   C  |   V  |   B  | Bksp |  Del |   N  |   M  |   ,  |   .  |   /  | _/Sf |
  * `-------------+------+------+------+------+------+------+------+------+------+------+-------------'
- *               |  GUI |  Alt | Enter| Lower| Space|Space |Raise | Enter|  Alt |  GUI |
+ *               |  GUI |  Alt | Enter| Lower| Raise|Raise |Lower | Enter|  Alt |  GUI |
  *               `---------------------------------------------------------------------'
  */
 [_MAC] = LAYOUT( \
     KC_ESC,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                      KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    JP_MINS, \
     KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,                      KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    JP_AT, \
     KC_LCTRL,KC_A,    KC_S,    KC_D,    KC_F,    KC_G,                      KC_H,    KC_J,    KC_K,    KC_L,    JP_SCLN, JP_COLN, \
-    KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_BSPC,  KC_DEL, KC_N,    KC_M,    JP_COMM, JP_DOT,  JP_SLSH, SFT_UNDS, \
+    KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_BSPC, KC_BSPC, KC_N,    KC_M,    JP_COMM, JP_DOT,  JP_SLSH, SFT_UNDS, \
                       KC_LGUI, KC_LALT, CTL_ENT, LOWER_ML,RAISE_L, RAISE_L, LOWER_MR,CTL_ENT, KC_RALT, KC_RGUI\
     ),
 
 /* Lower
  * ,-----------------------------------------.             ,-----------------------------------------.
- * | ESC  |  F1  |  F2  |  F3  |  F4  |  F5  |             |  F6  |  F7  |  F8  |  F9  |  F10 |   -  |
+ * | ESC  |  F1  |  F2  |  F3  |  F4  |  F5  |             |  F6  |  F7  |  F8  |  F9  |  F10 |   =  |
  * |------+------+------+------+------+------|             |------+------+------+------+------+------|
- * |CtlTab|  F11 |  F12 |  End | CtrlR|   T  |             | CtrlY|   U  |   I  | EntO |   ↑  |   @  |
+ * |CtlTab|  F11 |  F12 |  End | CtrlR|   T  |             | CtrlY|   U  |   I  | EntO |   ↑  |   `  |
  * |------+------+------+------+------+------|             |------+------+------+------+------+------|
- * | Ctrl | Home | CtrlS|  Del |   →  |   G  |             |  BS  |   J  | DelK |   L  |   ;  |   :  |
+ * | Ctrl | Home | CtrlS|  Del |   →  | CtrlG|             |  BS  |   J  | DelK |   L  |   ;  |   *  |
  * |------+------+------+------+------+------+-------------+------+------+------+------+------+------|
- * | Shift| CtrlZ| CtrlX| CtrlC| CtrlV|   ←  | Bksp |  Del |   ↓  |   M  | Ctrl,| Ctrl.|   /  |BSL/Sf|
+ * | Shift| CtrlZ| CtrlX| CtrlC| CtrlV|   ←  | Bksp |  Del |   ↓  |   M  | Ctrl,| Ctrl.|   /  |   _ |
  * `-------------+------+------+------+------+------+------+------+------+------+------+-------------'
- *               |  GUI |  Alt | Enter| Lower| Space|Space |Raise | Enter|  Alt |  GUI |
+ *               |  GUI |  Alt | Enter| Lower| Raise|Raise |Lower | Enter|  Alt |  GUI |
  *               `---------------------------------------------------------------------'
  */
 [_LOWER] = LAYOUT( \
-  _______,      KC_F1,      KC_F2,      KC_F3,      KC_F4,       KC_F5,                       KC_F6,       KC_F7,   KC_F8,         KC_F9,   KC_F10,  JP_MINS, \
-  LCTL(KC_TAB), KC_F11,     KC_F12,     KC_END,     LCTL(KC_R),  KC_T,                        LCTL(KC_Y),  KC_U,    KC_I,          MC_ENTO, KC_UP,   JP_AT, \
-  _______,      KC_HOME,    LCTL(KC_S), KC_DEL,     KC_RGHT,     KC_G,                        KC_BSPC,     KC_J,    MC_DELK,       KC_L,    JP_SCLN, JP_COLN, \
-  _______,      LCTL(KC_Z), LCTL(KC_X), LCTL(KC_C), LCTL(KC_V),  KC_LEFT,  _______,  _______, KC_DOWN,     KC_M,    LCTL(KC_COMMA),LCTL(KC_DOT),JP_SLSH, SFT_BSLS, \
+  _______,      KC_F1,      KC_F2,      KC_F3,      KC_F4,       KC_F5,                       KC_F6,       KC_F7,   KC_F8,         KC_F9,   KC_F10,  JP_EQL, \
+  LCTL(KC_TAB), KC_F11,     KC_F12,     KC_END,     LCTL(KC_R),  LCTL(KC_T),                  LCTL(KC_Y),  XXXXXXX, XXXXXXX,       MC_ENTO, KC_UP,   JP_GRV, \
+  _______,      KC_HOME,    LCTL(KC_S), KC_DEL,     KC_RGHT,     LCTL(KC_G),                  KC_BSPC,     XXXXXXX, MC_DELK,       XXXXXXX, JP_SCLN, JP_ASTR, \
+  _______,      LCTL(KC_Z), LCTL(KC_X), LCTL(KC_C), LCTL(KC_V),  KC_LEFT,  KC_DEL,   KC_DEL,  KC_DOWN,     XXXXXXX, LCTL(KC_COMMA),LCTL(KC_DOT),JP_SLSH, JP_UNDS, \
                             _______,    _______,    _______,     _______,  _______,  _______, _______,     _______, _______,       _______\
 ),
 
 /* Raise
  * ,-----------------------------------------.             ,-----------------------------------------.
- * | ESC  |  F1  |  F2  |  F3  |  F4  |  F5  |            |   &  |   '  |   (  |   )  |   ^  |   =  |
+ * | ESC  |  F1  |  F2  |  F3  |  F4  |  F5  |            |   &  |   '  |   (  |   )  |   ^  |   !  |
  * |------+------+------+------+------+------|             |------+------+------+------+------+------|
- * | Tab  |  F6  |  F7  |  F8  |  F9  |  F10 |             |   ¥  |   |  |   [  |   ]  | PgUp |   `  |
+ * | Tab  |  F6  |  F7  |  F8  |  F9  |  F10 |             |   ¥  |   |  |   [  |   ]  | PgUp |   "  |
  * |------+------+------+------+------+------|             |------+------+------+------+------+------|
- * | Ctrl | F11  |  F12 |CtlDel| Ctrl→|   G  |             | CtlBS|   ~  |   {  |   }  |   +  |   *  |
+ * | Ctrl | F11  |  F12 |CtlDel| Ctrl→| CtrlG|             | CtlBS|   ~  |   {  |   }  |   +  |   #  |
  * |------+------+------+------+------+------+-------------+------+------+------+------+------+------|
- * | Shift| CtrlZ| CtrlX| CtrlC| CtrlV| Ctrl←| Bksp |  Del | PgDn |   M  |   <  |   >  |   ?  |   _  |
+ * | Shift| CtrlZ| CtrlX| CtrlC| CtrlV| Ctrl←| Del | Bksp | PgDn |   %  |   <  |   >  |   ?  |   $  |
  * `-------------+------+------+------+------+------+------+------+------+------+------+-------------'
- *               |  GUI |  Alt |Lower |Space | Ctrl |Enter |Space | Raise|  Alt |  GUI |
+ *               |  GUI |  Alt | Enter| Lower| Raise|Raise |Lower | Enter|  Alt |  GUI |
  *               `---------------------------------------------------------------------'
  */
 [_RAISE] = LAYOUT( \
-  _______,   KC_F1,      KC_F2,      KC_F3,      KC_F4,     KC_F5,                       JP_AMPR, JP_QUOT, JP_LPRN, JP_RPRN, JP_CIRC, JP_EQL, \
-  KC_TAB,    KC_F6,      KC_F7,      KC_F8,      KC_F9,     KC_F10,                      JP_YEN,  JP_PIPE, JP_LBRC, JP_RBRC, KC_PGUP, JP_GRV, \
-  _______,   KC_F11,     KC_F12,     MC_DEL,     MC_CRGHT,  KC_G,                        MC_BCSP, JP_TILD, JP_LCBR, JP_RCBR, JP_PLUS, JP_ASTR, \
-  _______,   LCTL(KC_Z), LCTL(KC_X), LCTL(KC_C), LCTL(KC_V),MC_CLEFT, _______,  _______, KC_PGDN, KC_M,    JP_LT,   JP_GT,   JP_QUES, JP_UNDS, \
+  _______,   KC_F1,      KC_F2,      KC_F3,      KC_F4,     KC_F5,                       JP_AMPR, JP_QUOT, JP_LPRN, JP_RPRN, JP_CIRC, JP_EXLM, \
+  KC_TAB,    KC_F6,      KC_F7,      KC_F8,      KC_F9,     KC_F10,                      JP_YEN,  JP_PIPE, JP_LBRC, JP_RBRC, KC_PGUP, JP_DQT, \
+  _______,   KC_F11,     KC_F12,     MC_DEL,     MC_CRGHT,  LCTL(KC_G),                  MC_BCSP, JP_TILD, JP_LCBR, JP_RCBR, JP_PLUS, JP_HASH, \
+  _______,   LCTL(KC_Z), LCTL(KC_X), LCTL(KC_C), LCTL(KC_V),MC_CLEFT, MC_BCSP,  MC_BCSP, KC_PGDN, JP_PERC, JP_LT,   JP_GT,   JP_QUES, JP_DLR, \
                           _______,    _______,    _______,  _______,  _______,  _______, _______, _______, _______, _______\
 ),
 
@@ -160,9 +160,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------|             |------+------+------+------+------+------|
  * | Ctrl |  M←  |  M↓  |  M→  |   →  |   G  |             |   H  |   J  |   K  |   L  |   ;  |   :  |
  * |------+------+------+------+------+------+-------------+------+------+------+------+------+------|
- * | Shift|  F6  |  F7  |  F8  |  F9  |  F10  | Bksp |  Del |   ↓  |   M  |   ,  |   .  |   /  |BSL/Sf|
+ * | Shift|  F6  |  F7  |  F8  |  F9  |  F10  | RESET|RESET |   ↓  |   M  |   ,  |   .  |   /  |BSL/Sf|
  * `-------------+------+------+------+------+------+------+------+------+------+------+-------------'
- *               |  F11 |  F12 |Space | Lower| Enter|Enter |Raise |Space |  Alt |  GUI |
+ *               |  GUI |  Alt | Enter| Lower| Raise|Raise |Lower | Enter|  Alt |  GUI |
  *               `---------------------------------------------------------------------'
  */
 [_ADJUST] = LAYOUT( \
@@ -175,10 +175,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 /* Lower_Mac */
 [_MAC_LOWER] = LAYOUT( \
-  KC_ESC,       KC_F1,      KC_F2,       KC_F3,      KC_F4,      KC_F5,                       KC_F6,             KC_F7,   KC_F8,   KC_F9,   KC_F10,  JP_MINS, \
-  LCTL(KC_TAB), KC_F11,     KC_F12,      LCTL(KC_E), LGUI(KC_R), KC_T,                        LGUI(LSFT(KC_Y)),  KC_U,    KC_I,    MC_ENTO, KC_UP,   JP_AT, \
-  _______,      LCTL(KC_A),LGUI(KC_S),   KC_DEL,     KC_RGHT,    KC_G,                        KC_BSPC,           KC_J,    MC_DELK, KC_L,    JP_SCLN, JP_COLN, \
-  _______,      LGUI(KC_Z), LGUI(KC_X),  LGUI(KC_C), LGUI(KC_V), KC_LEFT,  _______,  _______, KC_DOWN,           KC_M,    KC_COMMA,KC_DOT,  JP_SLSH, SFT_BSLS, \
+  KC_ESC,       KC_F1,      KC_F2,       KC_F3,      KC_F4,      KC_F5,                       KC_F6,             KC_F7,   KC_F8,   KC_F9,   KC_F10,  JP_EQL, \
+  LCTL(KC_TAB), KC_F11,     KC_F12,      LCTL(KC_E), LGUI(KC_R), LGUI(KC_T),                  LGUI(LSFT(KC_Y)),  XXXXXXX, XXXXXXX, MC_ENTO, KC_UP,   JP_GRV, \
+  _______,      LCTL(KC_A),LGUI(KC_S),   KC_DEL,     KC_RGHT,    LGUI(KC_G),                  KC_BSPC,           XXXXXXX, MC_DELK, KC_L,    JP_SCLN, JP_ASTR, \
+  _______,      LGUI(KC_Z), LGUI(KC_X),  LGUI(KC_C), LGUI(KC_V), KC_LEFT,  _______,  _______, KC_DOWN,           XXXXXXX, KC_COMMA,KC_DOT,  JP_SLSH, JP_UNDS, \
                             _______,     _______,    _______,    _______,  _______,  _______, _______,           _______, _______, _______\
 )
 

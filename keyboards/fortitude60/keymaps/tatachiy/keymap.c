@@ -278,7 +278,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                 }
                 else
                 {
-                    SEND_STRING(SS_DOWN(X_LALT) SS_TAP(X_DELETE) SS_UP(X_LALT));
+                    SEND_STRING(SS_DOWN(X_LALT) SS_TAP(X_D) SS_UP(X_LALT));
                 }
             }
             break;

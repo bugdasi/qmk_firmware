@@ -20,7 +20,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include "config_common.h"
 
-#define PERMISSIVE_HOLD
 #define USE_SERIAL
 
 /* Select hand configuration */
@@ -29,7 +28,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // #define MASTER_RIGHT
 #define EE_HANDS
 
-#define TAPPING_TERM 500
+//#define PERMISSIVE_HOLD
+#define RETRO_TAPPING
+#define TAPPING_TERM 5 // 200
+// #define IGNORE_MOD_TAP_INTERRUPT
 
 /* #undef RGBLED_NUM */
 /* #define RGBLIGHT_ANIMATIONS */

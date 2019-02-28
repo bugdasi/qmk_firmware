@@ -151,7 +151,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   JP_TILD,   KC_F1,      KC_F2,      KC_F3,      KC_F4,     KC_F5,                            JP_CIRC, JP_YEN,  JP_LPRN, JP_RPRN, JP_CIRC, JP_UNDS, \
   KC_TAB,    KC_F6,      KC_F7,      KC_F8,      KC_F9,     KC_F10,                           JP_TILD, JP_PIPE, JP_LBRC, JP_RBRC, KC_PGUP, JP_LCBR, \
   _______,   KC_F11,     KC_F12,     MC_DEL,     MC_CRGHT,  XXXXXXX,                          MC_BCSP, XXXXXXX, JP_LCBR, JP_RCBR, KC_ENT,  KC_ENT, \
-  _______,   XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,   MC_CLEFT, MC_BCSP,  LALT(KC_ENT), KC_PGDN, XXXXXXX, JP_LT,   JP_GT,   JP_QUES, JP_PIPE, \
+  _______,   XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,   MC_CLEFT, KC_ENT,   LALT(KC_ENT), KC_PGDN, XXXXXXX, JP_LT,   JP_GT,   JP_QUES, JP_PIPE, \
                           _______,    _______,    _______,  _______,  _______,  _______,      _______, _______, _______, _______\
 ),
 

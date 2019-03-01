@@ -47,8 +47,8 @@ enum custom_keycodes {
 #define SPC_ADJ LT(_ADJUST, KC_SPC)
 
 //#define META_TAB LT(_META, KC_TAB) // タップでTab     ホールドでMeta
-#define SFT_UNDS SFT_T(JP_UNDS)
-#define SFT_BSLS SFT_T(JP_BSLS)
+#define SFT_UNDS RSFT_T(JP_UNDS)
+#define SFT_BSLS RSFT_T(JP_BSLS)
 #define ALT_KANA ALT_T(JP_MKANA)
 #define ALT_EISU ALT_T(JP_MEISU)
 
@@ -88,7 +88,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_ESC,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                      KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    JP_MINS, \
   KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,                      KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    JP_AT, \
   EMACS,   KC_A,    KC_S,    KC_D,    KC_F,    KC_G,                      KC_H,    KC_J,    KC_K,    KC_L,    JP_SCLN, JP_COLN, \
-  KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,   KC_BSPC,  KC_ENT,  KC_N,    KC_M,    JP_COMM, JP_DOT,  JP_SLSH, SFT_T(JP_BSLS), \
+  KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,   KC_BSPC,  KC_ENT,  KC_N,    KC_M,    JP_COMM, JP_DOT,  JP_SLSH, SFT_BSLS, \
                     KC_LGUI, KC_LALT, CTL_L,   LOWER_L,RAISE_L,  RAISE_R, LOWER_R, CTL_R,   KC_RALT, KC_RGUI\
 ),
 
@@ -109,7 +109,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_ESC,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                      KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    JP_MINS, \
     KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,                      KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    JP_AT, \
     KC_LCTRL,KC_A,    KC_S,    KC_D,    KC_F,    KC_G,                      KC_H,    KC_J,    KC_K,    KC_L,    JP_SCLN, JP_COLN, \
-    KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_BSPC, KC_ENT,  KC_N,    KC_M,    JP_COMM, JP_DOT,  JP_SLSH, SFT_T(JP_BSLS), \
+    KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_BSPC, KC_ENT,  KC_N,    KC_M,    JP_COMM, JP_DOT,  JP_SLSH, SFT_UNDS, \
                       KC_LGUI, KC_LALT, CTL_ML,  LOWER_ML,RAISE_L, RAISE_L, LOWER_MR,CTL_MR,  KC_RALT, KC_RGUI\
     ),
 
@@ -127,10 +127,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *               `---------------------------------------------------------------------'
  */
 [_LOWER] = LAYOUT( \
-  JP_GRV,       LCTL(KC_1), LCTL(KC_2), LCTL(KC_3), LCTL(KC_4),  LCTL(KC_5),                             JP_CIRC,     JP_YEN,  JP_LBRC,       JP_RBRC,     XXXXXXX, JP_MINS, \
-  LCTL(KC_TAB), LCTL(KC_Q), LCTL(KC_W), KC_END,     LCTL(KC_R),  LCTL(KC_T),                             LCTL(KC_Y),  XXXXXXX, XXXXXXX,       MC_ENTO,     KC_UP,   JP_LBRC, \
-  _______,      KC_HOME,    LCTL(KC_S), KC_DEL,     KC_RGHT,     LCTL(KC_G),                             KC_BSPC,     XXXXXXX, MC_DELK,       XXXXXXX,     KC_ENT,  KC_ENT, \
-  _______,      LCTL(KC_Z), LCTL(KC_X), LCTL(KC_C), LCTL(KC_V),  KC_LEFT,     KC_DEL,      LSFT(KC_ENT), KC_DOWN,     XXXXXXX, LCTL(KC_COMMA),LCTL(KC_DOT),JP_SLSH, JP_YEN, \
+  JP_GRV,       LCTL(KC_1), LCTL(KC_2), LCTL(KC_3), LCTL(KC_4),  LCTL(KC_5),                             JP_CIRC,     JP_YEN,    JP_LBRC,     JP_RBRC,     XXXXXXX, JP_MINS, \
+  LCTL(KC_TAB), LCTL(KC_Q), LCTL(KC_W), KC_END,     LCTL(KC_R),  LCTL(KC_T),                             LCTL(KC_Y),  LCTL(KC_U),LCTL(KC_I),  MC_ENTO,     KC_UP,   JP_LBRC, \
+  _______,      KC_HOME,    LCTL(KC_S), KC_DEL,     KC_RGHT,     LCTL(KC_G),                             KC_BSPC,     LCTL(KC_J),MC_DELK,     LCTL(KC_L),  KC_ENT,  KC_ENT, \
+  _______,      LCTL(KC_Z), LCTL(KC_X), LCTL(KC_C), LCTL(KC_V),  KC_LEFT,     KC_ENT,      LSFT(KC_ENT), KC_DOWN,     LCTL(KC_M),LCTL(KC_COMMA),LCTL(KC_DOT),JP_SLSH, JP_YEN, \
                             _______,    _______,    _______,     _______,     LCTL(KC_SPC),LCTL(KC_SPC), _______,     _______, _______,       _______\
 ),
 
@@ -178,10 +178,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 /* Lower_Mac */
 [_MAC_LOWER] = LAYOUT( \
-  JP_GRV,       LGUI(KC_1), LGUI(KC_2),  LGUI(KC_3), LGUI(KC_4), LGUI(KC_5),                       JP_CIRC,           JP_YEN,  JP_LBRC, JP_RBRC, XXXXXXX, JP_MINS, \
-  LCTL(KC_TAB), LGUI(KC_Q), LGUI(KC_W),  LCTL(KC_E), LGUI(KC_R), LGUI(KC_T),                       LGUI(LSFT(KC_Y)),  XXXXXXX, XXXXXXX, MC_ENTO, KC_UP,   JP_LBRC, \
-  _______,      LCTL(KC_A), LGUI(KC_S),  KC_DEL,     KC_RGHT,    LGUI(KC_G),                       KC_BSPC,           XXXXXXX, MC_DELK, XXXXXXX, KC_ENT,  KC_ENT, \
-  _______,      LGUI(KC_Z), LGUI(KC_X),  LGUI(KC_C), LGUI(KC_V), KC_LEFT,  KC_DEL,   LCTL(KC_ENT), KC_DOWN,           XXXXXXX, KC_COMMA,KC_DOT,  JP_SLSH, JP_YEN, \
+  JP_GRV,       LGUI(KC_1), LGUI(KC_2),  LGUI(KC_3), LGUI(KC_4), LGUI(KC_5),                       JP_CIRC,           JP_YEN,     JP_LBRC,    JP_RBRC, XXXXXXX, JP_MINS, \
+  LCTL(KC_TAB), LGUI(KC_Q), LGUI(KC_W),  LCTL(KC_E), LGUI(KC_R), LGUI(KC_T),                       LGUI(LSFT(KC_Y)),  LGUI(KC_U), LGUI(KC_I), MC_ENTO, KC_UP,   JP_LBRC, \
+  _______,      LCTL(KC_A), LGUI(KC_S),  KC_DEL,     KC_RGHT,    LGUI(KC_G),                       KC_BSPC,           LGUI(KC_J), MC_DELK,    LGUI(KC_L), KC_ENT,  KC_ENT, \
+  _______,      LGUI(KC_Z), LGUI(KC_X),  LGUI(KC_C), LGUI(KC_V), KC_LEFT,  KC_ENT,   LCTL(KC_ENT), KC_DOWN,           LGUI(KC_M), KC_COMMA,   KC_DOT,  JP_SLSH, JP_YEN, \
                             _______,     _______,    _______,    _______,  _______,  _______,      _______,           _______, _______, _______\
 )
 

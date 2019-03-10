@@ -14,9 +14,11 @@ extern keymap_config_t keymap_config;
 enum {
   _QWERTY = 0,
   _MAC,
-  _LOWER,
+  _LOWER_L,
+  _LOWER_R,
   _RAISE,
-  _MAC_LOWER,
+  _MAC_LOWER_L,
+  _MAC_LOWER_R,
   _ADJUST,
 };
 
@@ -35,15 +37,15 @@ enum custom_keycodes {
 #define _______ KC_TRNS
 #define XXXXXXX KC_NO
 
-#define LOWER_L LT(_LOWER, KC_MHEN)
-#define LOWER_R LT(_LOWER, KC_HENK)
-#define RAISE_L LT(_RAISE, KC_SPC)
-#define RAISE_R LT(_RAISE, KC_SPC)
+#define LOWER_L MO(_LOWER_L) //LT(_LOWER, KC_MHEN)
+#define LOWER_R MO(_LOWER_R) //LT(_LOWER, KC_HENK)
+#define RAISE_L MO(_RAISE) //LT(_RAISE, KC_SPC)
+#define RAISE_R MO(_RAISE) //LT(_RAISE, KC_SPC)
 #define CTL_L KC_LCTRL
 #define CTL_R KC_LCTRL //CTL_T(KC_ENT)
 #define CTL_ML KC_LGUI // GUI_T(JP_MEISU)
 #define CTL_MR KC_RGUI //GUI_T(KC_ENT)
-#define EMACS MO(_LOWER)          // EMacs風
+#define EMACS MO(_LOWER_L)          // EMacs風
 #define SPC_ADJ LT(_ADJUST, KC_SPC)
 
 //#define META_TAB LT(_META, KC_TAB) // タップでTab     ホールドでMeta
@@ -52,8 +54,8 @@ enum custom_keycodes {
 #define ALT_KANA ALT_T(JP_MKANA)
 #define ALT_EISU ALT_T(JP_MEISU)
 
-#define LOWER_ML LT(_MAC_LOWER, JP_MEISU)
-#define LOWER_MR LT(_MAC_LOWER, JP_MKANA)
+#define LOWER_ML MO(_MAC_LOWER_L)//LT(_MAC_LOWER, JP_MEISU)
+#define LOWER_MR MO(_MAC_LOWER_R)//LT(_MAC_LOWER, JP_MKANA)
 
 #define KC_L1 KC_LGUI
 #define KC_L2 KC_LALT
@@ -126,12 +128,20 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *               |  GUI |  Alt | Enter| Lower| Raise|Raise |Lower | Enter|  Alt |  GUI |
  *               `---------------------------------------------------------------------'
  */
-[_LOWER] = LAYOUT( \
+[_LOWER_L] = LAYOUT( \
   JP_GRV,       LCTL(KC_1), LCTL(KC_2), LCTL(KC_3), LCTL(KC_4),  LCTL(KC_5),                             LCTL(KC_6),  LCTL(KC_7),JP_LPRN,       JP_RPRN,  JP_CIRC, JP_YEN,\
   LCTL(KC_TAB), LCTL(KC_Q), LCTL(KC_W), KC_END,     LCTL(KC_R),  LCTL(KC_T),                             LCTL(KC_Y),  LCTL(KC_U),LCTL(KC_I),    MC_ENTO,     KC_UP,   JP_LBRC, \
   _______,      KC_HOME,    LCTL(KC_S), KC_DEL,     KC_RGHT,     LCTL(KC_G),                             KC_BSPC,     LCTL(KC_J),MC_DELK,       LCTL(KC_L),  KC_ENT,  JP_RBRC, \
   _______,      LCTL(KC_Z), LCTL(KC_X), LCTL(KC_C), LCTL(KC_V),  KC_LEFT,     KC_ENT,      KC_ENT,       KC_DOWN,     LCTL(KC_M),LCTL(KC_COMMA),LCTL(KC_DOT),JP_SLSH, JP_YEN, \
-                            _______,    _______,    _______,     _______,     LCTL(KC_SPC),LCTL(KC_SPC), _______,     _______,   _______,       _______\
+                            _______,    _______,    _______,     LOWER_L,     _______,     KC_SPC,       KC_HENK,     _______,   _______,       _______\
+),
+
+[_LOWER_R] = LAYOUT( \
+  JP_GRV,       LCTL(KC_1), LCTL(KC_2), LCTL(KC_3), LCTL(KC_4),  LCTL(KC_5),                             LCTL(KC_6),  LCTL(KC_7),JP_LPRN,       JP_RPRN,  JP_CIRC, JP_YEN,\
+  LCTL(KC_TAB), LCTL(KC_Q), LCTL(KC_W), KC_END,     LCTL(KC_R),  LCTL(KC_T),                             LCTL(KC_Y),  LCTL(KC_U),LCTL(KC_I),    MC_ENTO,     KC_UP,   JP_LBRC, \
+  _______,      KC_HOME,    LCTL(KC_S), KC_DEL,     KC_RGHT,     LCTL(KC_G),                             KC_BSPC,     LCTL(KC_J),MC_DELK,       LCTL(KC_L),  KC_ENT,  JP_RBRC, \
+  _______,      LCTL(KC_Z), LCTL(KC_X), LCTL(KC_C), LCTL(KC_V),  KC_LEFT,     KC_ENT,      KC_ENT,       KC_DOWN,     LCTL(KC_M),LCTL(KC_COMMA),LCTL(KC_DOT),JP_SLSH, JP_YEN, \
+                            _______, _______, _______, KC_MHEN,  KC_SPC, _______, LOWER_R, _______, _______, _______\
 ),
 
 /* Raise
@@ -148,11 +158,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *               `---------------------------------------------------------------------'
  */
 [_RAISE] = LAYOUT( \
-  JP_TILD,   KC_F1,      KC_F2,      KC_F3,      KC_F4,     KC_F5,                              JP_CIRC, JP_YEN,     JP_LPRN,        JP_RPRN,     JP_TILD, JP_PIPE, \
-  KC_TAB,    KC_F6,      KC_F7,      KC_F8,      KC_F9,     KC_F10,                             JP_TILD, JP_PIPE,    LCTL(KC_U),     MC_ENTO,     KC_PGUP, JP_LCBR, \
-  _______,   KC_F11,     KC_F12,     MC_DEL,     MC_CRGHT,  LCTL(KC_L),                         MC_BCSP, LCTL(KC_J), MC_DELK,        LCTL(KC_L),  KC_ENT,  JP_RCBR, \
-  _______,   XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,   MC_CLEFT, LSFT(KC_ENT),LSFT(KC_ENT),KC_PGDN, LCTL(KC_M), JP_LT,          JP_GT,       JP_QUES, JP_UNDS, \
-                          _______,    _______,    _______,  _______,  _______,  _______,      _______, _______, _______, _______\
+  JP_TILD,   KC_F1,      KC_F2,      KC_F3,      KC_F4,     KC_F5,                              LCTL(KC_6), LCTL(KC_7), JP_LBRC,    JP_RBRC,     JP_TILD, JP_PIPE, \
+  KC_TAB,    KC_F6,      KC_F7,      KC_F8,      KC_F9,     KC_F10,                             LCTL(KC_Y), LCTL(KC_U), LCTL(KC_U), MC_ENTO,     KC_PGUP, JP_LCBR, \
+  _______,   KC_F11,     KC_F12,     MC_DEL,     MC_CRGHT,  LCTL(KC_L),                         MC_BCSP,    LCTL(KC_J), MC_DELK,    LCTL(KC_L),  KC_ENT,  JP_RCBR, \
+  _______,   XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,   MC_CLEFT, KC_SPC,  KC_SPC,  KC_PGDN,    LCTL(KC_M), JP_LT,      JP_GT,       JP_QUES, JP_UNDS, \
+                          _______,    _______,    _______,  _______,  _______, _______, _______,    _______,    _______,    _______\
 ),
 
 /* Adjust (Lower + Raise)
@@ -177,24 +187,46 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 ),
 
 /* Lower_Mac */
-[_MAC_LOWER] = LAYOUT( \
+[_MAC_LOWER_L] = LAYOUT( \
   JP_GRV,       LGUI(KC_1), LGUI(KC_2),  LGUI(KC_3), LGUI(KC_4), LGUI(KC_5),                       LGUI(KC_6),        LGUI(KC_7), JP_LPRN,    JP_RPRN, JP_CIRC, JP_YEN, \
   LCTL(KC_TAB), LGUI(KC_Q), LGUI(KC_W),  LCTL(KC_E), LGUI(KC_R), LGUI(KC_T),                       LGUI(LSFT(KC_Y)),  LGUI(KC_U), LGUI(KC_I), MC_ENTO,    KC_UP,   JP_LBRC, \
-  _______,      LCTL(KC_A), LGUI(KC_S),  KC_DEL,     KC_RGHT,    LGUI(KC_G),                       KC_BSPC,           LGUI(KC_J), MC_DELK,    LGUI(KC_L), KC_ENT,  JP_RBRC, \
+  KC_LCTRL,     LCTL(KC_A), LGUI(KC_S),  KC_DEL,     KC_RGHT,    LGUI(KC_G),                       KC_BSPC,           LGUI(KC_J), MC_DELK,    LGUI(KC_L), KC_ENT,  JP_RBRC, \
   _______,      LGUI(KC_Z), LGUI(KC_X),  LGUI(KC_C), LGUI(KC_V), KC_LEFT,  KC_ENT,   LCTL(KC_ENT), KC_DOWN,           LGUI(KC_M), LGUI(KC_COMMA),LGUI(KC_DOT),JP_SLSH, JP_YEN, \
-                            _______,     _______,    _______,    _______,  _______,  _______,      _______,           _______, _______, _______\
-)
+                            _______,     _______,    _______,    LOWER_ML,  _______,  KC_SPC,     JP_MKANA,           _______, _______, _______\
+),
+    
+[_MAC_LOWER_R] = LAYOUT( \
+  JP_GRV,       LGUI(KC_1), LGUI(KC_2),  LGUI(KC_3), LGUI(KC_4), LGUI(KC_5),                       LGUI(KC_6),        LGUI(KC_7), JP_LPRN,    JP_RPRN, JP_CIRC, JP_YEN, \
+  LCTL(KC_TAB), LGUI(KC_Q), LGUI(KC_W),  LCTL(KC_E), LGUI(KC_R), LGUI(KC_T),                       LGUI(LSFT(KC_Y)),  LGUI(KC_U), LGUI(KC_I), MC_ENTO,    KC_UP,   JP_LBRC, \
+  KC_LCTRL,     LCTL(KC_A), LGUI(KC_S),  KC_DEL,     KC_RGHT,    LGUI(KC_G),                       KC_BSPC,           LGUI(KC_J), MC_DELK,    LGUI(KC_L), KC_ENT,  JP_RBRC, \
+  _______,      LGUI(KC_Z), LGUI(KC_X),  LGUI(KC_C), LGUI(KC_V), KC_LEFT,  KC_ENT,   LCTL(KC_ENT), KC_DOWN,           LGUI(KC_M), LGUI(KC_COMMA),LGUI(KC_DOT),JP_SLSH, JP_YEN, \
+                            _______, _______, _______, JP_MEISU, KC_SPC, _______, LOWER_MR, _______, _______, _______\
+),
 
 };
 
   uint32_t layer_state_set_user(uint32_t state) {
       switch (biton32(default_layer_state)) {
           case _QWERTY:
-              state = update_tri_layer_state(state, _LOWER, _RAISE, _ADJUST);
+          {
+              state = update_tri_layer_state(state, _LOWER_L, _RAISE, _ADJUST);
+              uint8_t layer = biton32(state);
+              if (layer != _ADJUST)
+              {
+                  state = update_tri_layer_state(state, _LOWER_R, _RAISE, _ADJUST);
+              }
               break;
+          }
           case _MAC:
-              state = update_tri_layer_state(state, _MAC_LOWER, _RAISE, _ADJUST);
+          {
+              state = update_tri_layer_state(state, _MAC_LOWER_L, _RAISE, _ADJUST);
+              uint8_t layer = biton32(state);
+              if (layer != _ADJUST)
+              {
+                  state = update_tri_layer_state(state, _MAC_LOWER_R, _RAISE, _ADJUST);
+              }
               break;
+          }
       }
       return state;
   }

@@ -16,7 +16,8 @@ enum {
   _MAC,
   _LOWER_L,
   _LOWER_R,
-  _RAISE,
+  _RAISE_L,
+  _RAISE_R,
   _MAC_LOWER_L,
   _MAC_LOWER_R,
   _ADJUST,
@@ -39,8 +40,8 @@ enum custom_keycodes {
 
 #define LOWER_L MO(_LOWER_L) //LT(_LOWER, KC_MHEN)
 #define LOWER_R MO(_LOWER_R) //LT(_LOWER, KC_HENK)
-#define RAISE_L MO(_RAISE) //LT(_RAISE, KC_SPC)
-#define RAISE_R MO(_RAISE) //LT(_RAISE, KC_SPC)
+#define RAISE_L MO(_RAISE_L) //LT(_RAISE, KC_SPC)
+#define RAISE_R MO(_RAISE_R) //LT(_RAISE, KC_SPC)
 #define CTL_L KC_LCTRL
 #define CTL_R KC_LCTRL //CTL_T(KC_ENT)
 #define CTL_ML KC_LGUI // GUI_T(JP_MEISU)
@@ -133,7 +134,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   LCTL(KC_TAB), LCTL(KC_Q), LCTL(KC_W), KC_END,     LCTL(KC_R),  LCTL(KC_T),                             LCTL(KC_Y),  LCTL(KC_U),LCTL(KC_I),    MC_ENTO,     KC_UP,   JP_LBRC, \
   _______,      KC_HOME,    LCTL(KC_S), KC_DEL,     KC_RGHT,     LCTL(KC_G),                             KC_BSPC,     LCTL(KC_J),MC_DELK,       LCTL(KC_L),  KC_ENT,  JP_RBRC, \
   _______,      LCTL(KC_Z), LCTL(KC_X), LCTL(KC_C), LCTL(KC_V),  KC_LEFT,     KC_ENT,      KC_ENT,       KC_DOWN,     LCTL(KC_M),LCTL(KC_COMMA),LCTL(KC_DOT),JP_SLSH, JP_YEN, \
-                            _______,    _______,    _______,     LOWER_L,     _______,     KC_SPC,       KC_HENK,     _______,   _______,       _______\
+                            _______,    _______,    _______,     LOWER_L,     RAISE_L,     KC_SPC,       KC_HENK,     _______,    _______,    _______\
 ),
 
 [_LOWER_R] = LAYOUT( \
@@ -141,7 +142,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   LCTL(KC_TAB), LCTL(KC_Q), LCTL(KC_W), KC_END,     LCTL(KC_R),  LCTL(KC_T),                             LCTL(KC_Y),  LCTL(KC_U),LCTL(KC_I),    MC_ENTO,     KC_UP,   JP_LBRC, \
   _______,      KC_HOME,    LCTL(KC_S), KC_DEL,     KC_RGHT,     LCTL(KC_G),                             KC_BSPC,     LCTL(KC_J),MC_DELK,       LCTL(KC_L),  KC_ENT,  JP_RBRC, \
   _______,      LCTL(KC_Z), LCTL(KC_X), LCTL(KC_C), LCTL(KC_V),  KC_LEFT,     KC_ENT,      KC_ENT,       KC_DOWN,     LCTL(KC_M),LCTL(KC_COMMA),LCTL(KC_DOT),JP_SLSH, JP_YEN, \
-                            _______, _______, _______, KC_MHEN,  KC_SPC, _______, LOWER_R, _______, _______, _______\
+                            _______,    _______,    _______,     KC_MHEN,     KC_SPC,      RAISE_R,      LOWER_R,     _______,    _______,    _______\
 ),
 
 /* Raise
@@ -157,13 +158,20 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *               |  GUI |  Alt | Enter| Lower| Raise|Raise |Lower | Enter|  Alt |  GUI |
  *               `---------------------------------------------------------------------'
  */
-[_RAISE] = LAYOUT( \
+[_RAISE_L] = LAYOUT( \
   JP_TILD,   KC_F1,      KC_F2,      KC_F3,      KC_F4,     KC_F5,                              LCTL(KC_6), LCTL(KC_7), JP_LBRC,    JP_RBRC,     JP_TILD, JP_PIPE, \
   KC_TAB,    KC_F6,      KC_F7,      KC_F8,      KC_F9,     KC_F10,                             LCTL(KC_Y), LCTL(KC_U), LCTL(KC_U), MC_ENTO,     KC_PGUP, JP_LCBR, \
   _______,   KC_F11,     KC_F12,     MC_DEL,     MC_CRGHT,  LCTL(KC_L),                         MC_BCSP,    LCTL(KC_J), MC_DELK,    LCTL(KC_L),  KC_ENT,  JP_RCBR, \
   _______,   XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,   MC_CLEFT, KC_SPC,  KC_SPC,  KC_PGDN,    LCTL(KC_M), JP_LT,      JP_GT,       JP_QUES, JP_UNDS, \
-                          _______,    _______,    _______,  _______,  _______, _______, _______,    _______,    _______,    _______\
+                         _______,    _______,    _______,   _______,  RAISE_L, LCTL(KC_SPC), _______, _______,   _______, _______\
 ),
+[_RAISE_R] = LAYOUT( \
+  JP_TILD,   KC_F1,      KC_F2,      KC_F3,      KC_F4,     KC_F5,                              LCTL(KC_6), LCTL(KC_7), JP_LBRC,    JP_RBRC,     JP_TILD, JP_PIPE, \
+  KC_TAB,    KC_F6,      KC_F7,      KC_F8,      KC_F9,     KC_F10,                             LCTL(KC_Y), LCTL(KC_U), LCTL(KC_U), MC_ENTO,     KC_PGUP, JP_LCBR, \
+  _______,   KC_F11,     KC_F12,     MC_DEL,     MC_CRGHT,  LCTL(KC_L),                         MC_BCSP,    LCTL(KC_J), MC_DELK,    LCTL(KC_L),  KC_ENT,  JP_RCBR, \
+  _______,   XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,   MC_CLEFT, KC_SPC,  KC_SPC,  KC_PGDN,    LCTL(KC_M), JP_LT,      JP_GT,       JP_QUES, JP_UNDS, \
+                         _______,    _______,    _______,   _______,  LCTL(KC_SPC), RAISE_R, _______, _______,   _______, _______\
+  ),
 
 /* Adjust (Lower + Raise)
  * ,-----------------------------------------.             ,-----------------------------------------.
@@ -191,16 +199,16 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   JP_GRV,       LGUI(KC_1), LGUI(KC_2),  LGUI(KC_3), LGUI(KC_4), LGUI(KC_5),                       LGUI(KC_6),        LGUI(KC_7), JP_LPRN,    JP_RPRN, JP_CIRC, JP_YEN, \
   LCTL(KC_TAB), LGUI(KC_Q), LGUI(KC_W),  LCTL(KC_E), LGUI(KC_R), LGUI(KC_T),                       LGUI(LSFT(KC_Y)),  LGUI(KC_U), LGUI(KC_I), MC_ENTO,    KC_UP,   JP_LBRC, \
   KC_LCTRL,     LCTL(KC_A), LGUI(KC_S),  KC_DEL,     KC_RGHT,    LGUI(KC_G),                       KC_BSPC,           LGUI(KC_J), MC_DELK,    LGUI(KC_L), KC_ENT,  JP_RBRC, \
-  _______,      LGUI(KC_Z), LGUI(KC_X),  LGUI(KC_C), LGUI(KC_V), KC_LEFT,  KC_ENT,   LCTL(KC_ENT), KC_DOWN,           LGUI(KC_M), LGUI(KC_COMMA),LGUI(KC_DOT),JP_SLSH, JP_YEN, \
-                            _______,     _______,    _______,    LOWER_ML,  _______,  KC_SPC,     JP_MKANA,           _______, _______, _______\
+  _______,      LGUI(KC_Z), LGUI(KC_X),  LGUI(KC_C), LGUI(KC_V), KC_LEFT,  KC_ENT,   KC_ENT, KC_DOWN,           LGUI(KC_M), LGUI(KC_COMMA),LGUI(KC_DOT),JP_SLSH, JP_YEN, \
+                            _______,    _______,    _______,    LOWER_ML,  RAISE_L,  KC_SPC,     JP_MKANA,           _______,    _______,    _______\
 ),
     
 [_MAC_LOWER_R] = LAYOUT( \
   JP_GRV,       LGUI(KC_1), LGUI(KC_2),  LGUI(KC_3), LGUI(KC_4), LGUI(KC_5),                       LGUI(KC_6),        LGUI(KC_7), JP_LPRN,    JP_RPRN, JP_CIRC, JP_YEN, \
   LCTL(KC_TAB), LGUI(KC_Q), LGUI(KC_W),  LCTL(KC_E), LGUI(KC_R), LGUI(KC_T),                       LGUI(LSFT(KC_Y)),  LGUI(KC_U), LGUI(KC_I), MC_ENTO,    KC_UP,   JP_LBRC, \
   KC_LCTRL,     LCTL(KC_A), LGUI(KC_S),  KC_DEL,     KC_RGHT,    LGUI(KC_G),                       KC_BSPC,           LGUI(KC_J), MC_DELK,    LGUI(KC_L), KC_ENT,  JP_RBRC, \
-  _______,      LGUI(KC_Z), LGUI(KC_X),  LGUI(KC_C), LGUI(KC_V), KC_LEFT,  KC_ENT,   LCTL(KC_ENT), KC_DOWN,           LGUI(KC_M), LGUI(KC_COMMA),LGUI(KC_DOT),JP_SLSH, JP_YEN, \
-                            _______, _______, _______, JP_MEISU, KC_SPC, _______, LOWER_MR, _______, _______, _______\
+  _______,      LGUI(KC_Z), LGUI(KC_X),  LGUI(KC_C), LGUI(KC_V), KC_LEFT,  KC_ENT,    KC_ENT,  KC_DOWN,           LGUI(KC_M), LGUI(KC_COMMA),LGUI(KC_DOT),JP_SLSH, JP_YEN, \
+                            _______,    _______,    _______, JP_MEISU, KC_SPC, RAISE_R, LOWER_MR, _______,    _______,    _______\
 ),
 
 };
@@ -209,21 +217,21 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       switch (biton32(default_layer_state)) {
           case _QWERTY:
           {
-              state = update_tri_layer_state(state, _LOWER_L, _RAISE, _ADJUST);
+              state = update_tri_layer_state(state, _LOWER_L, _RAISE_L, _ADJUST);
               uint8_t layer = biton32(state);
               if (layer != _ADJUST)
               {
-                  state = update_tri_layer_state(state, _LOWER_R, _RAISE, _ADJUST);
+                  state = update_tri_layer_state(state, _LOWER_R, _RAISE_R, _ADJUST);
               }
               break;
           }
           case _MAC:
           {
-              state = update_tri_layer_state(state, _MAC_LOWER_L, _RAISE, _ADJUST);
+              state = update_tri_layer_state(state, _MAC_LOWER_L, _RAISE_L, _ADJUST);
               uint8_t layer = biton32(state);
               if (layer != _ADJUST)
               {
-                  state = update_tri_layer_state(state, _MAC_LOWER_R, _RAISE, _ADJUST);
+                  state = update_tri_layer_state(state, _MAC_LOWER_R, _RAISE_R, _ADJUST);
               }
               break;
           }

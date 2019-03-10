@@ -162,14 +162,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   JP_TILD,   KC_F1,      KC_F2,      KC_F3,      KC_F4,     KC_F5,                              LCTL(KC_6), LCTL(KC_7), JP_LBRC,    JP_RBRC,     JP_TILD, JP_PIPE, \
   KC_TAB,    KC_F6,      KC_F7,      KC_F8,      KC_F9,     KC_F10,                             LCTL(KC_Y), LCTL(KC_U), LCTL(KC_U), MC_ENTO,     KC_PGUP, JP_LCBR, \
   _______,   KC_F11,     KC_F12,     MC_DEL,     MC_CRGHT,  LCTL(KC_L),                         MC_BCSP,    LCTL(KC_J), MC_DELK,    LCTL(KC_L),  KC_ENT,  JP_RCBR, \
-  _______,   XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,   MC_CLEFT, KC_SPC,  KC_SPC,  KC_PGDN,    LCTL(KC_M), JP_LT,      JP_GT,       JP_QUES, JP_UNDS, \
+  _______,   XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,   MC_CLEFT, KC_SPC,  KC_SPC,  KC_PGDN,    LCTL(KC_M), LCTL(KC_COMMA),LCTL(KC_DOT),       JP_QUES, JP_UNDS, \
                          _______,    _______,    _______,   _______,  RAISE_L, LCTL(KC_SPC), _______, _______,   _______, _______\
 ),
 [_RAISE_R] = LAYOUT( \
   JP_TILD,   KC_F1,      KC_F2,      KC_F3,      KC_F4,     KC_F5,                              LCTL(KC_6), LCTL(KC_7), JP_LBRC,    JP_RBRC,     JP_TILD, JP_PIPE, \
   KC_TAB,    KC_F6,      KC_F7,      KC_F8,      KC_F9,     KC_F10,                             LCTL(KC_Y), LCTL(KC_U), LCTL(KC_U), MC_ENTO,     KC_PGUP, JP_LCBR, \
   _______,   KC_F11,     KC_F12,     MC_DEL,     MC_CRGHT,  LCTL(KC_L),                         MC_BCSP,    LCTL(KC_J), MC_DELK,    LCTL(KC_L),  KC_ENT,  JP_RCBR, \
-  _______,   XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,   MC_CLEFT, KC_SPC,  KC_SPC,  KC_PGDN,    LCTL(KC_M), JP_LT,      JP_GT,       JP_QUES, JP_UNDS, \
+  _______,   XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,   MC_CLEFT, KC_SPC,  KC_SPC,  KC_PGDN,    LCTL(KC_M), LCTL(KC_COMMA),LCTL(KC_DOT),       JP_QUES, JP_UNDS, \
                          _______,    _______,    _______,   _______,  LCTL(KC_SPC), RAISE_R, _______, _______,   _______, _______\
   ),
 

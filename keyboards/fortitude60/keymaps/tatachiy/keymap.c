@@ -32,6 +32,8 @@ enum custom_keycodes {
   MC_CRGHT,
   MC_BCSP,
   MC_DEL,
+  MC_RAISE_L,
+  MC_RAISE_R,
 };
 
 // Fillers to make layering more clear
@@ -40,8 +42,8 @@ enum custom_keycodes {
 
 #define LOWER_L MO(_LOWER_L) //LT(_LOWER, KC_MHEN)
 #define LOWER_R MO(_LOWER_R) //LT(_LOWER, KC_HENK)
-#define RAISE_L MO(_RAISE_L) //LT(_RAISE, KC_SPC)
-#define RAISE_R MO(_RAISE_R) //LT(_RAISE, KC_SPC)
+#define RAISE_L LT(_RAISE_L, KC_SPC)
+#define RAISE_R LT(_RAISE_R, KC_SPC)
 #define CTL_L KC_LCTRL
 #define CTL_R KC_LCTRL //CTL_T(KC_ENT)
 #define CTL_ML KC_LGUI // GUI_T(JP_MEISU)
@@ -92,7 +94,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,                      KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    JP_AT, \
   EMACS,   KC_A,    KC_S,    KC_D,    KC_F,    KC_G,                      KC_H,    KC_J,    KC_K,    KC_L,    JP_SCLN, JP_COLN, \
   KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,   KC_BSPC,  KC_BSPC, KC_N,    KC_M,    JP_COMM, JP_DOT,  JP_SLSH, SFT_BSLS, \
-                    KC_LGUI, KC_LALT, CTL_L,   LOWER_L,RAISE_L,  RAISE_R, LOWER_R, CTL_R,   KC_RALT, KC_RGUI\
+                    KC_LGUI, KC_LALT, CTL_L,   LOWER_L,MC_RAISE_L,MC_RAISE_R, LOWER_R, CTL_R,   KC_RALT, KC_RGUI\
 ),
 
 /* Mac
@@ -113,7 +115,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,                      KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    JP_AT, \
     KC_LCTRL,KC_A,    KC_S,    KC_D,    KC_F,    KC_G,                      KC_H,    KC_J,    KC_K,    KC_L,    JP_SCLN, JP_COLN, \
     KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_BSPC, KC_BSPC, KC_N,    KC_M,    JP_COMM, JP_DOT,  JP_SLSH, SFT_UNDS, \
-                      KC_LGUI, KC_LALT, CTL_ML,  LOWER_ML,RAISE_L, RAISE_L, LOWER_MR,CTL_MR,  KC_RALT, KC_RGUI\
+                      KC_LGUI, KC_LALT, CTL_ML,  LOWER_ML,MC_RAISE_L,MC_RAISE_R, LOWER_MR,CTL_MR,  KC_RALT, KC_RGUI\
     ),
 
 /* Lower
@@ -134,7 +136,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   LCTL(KC_TAB), LCTL(KC_Q), LCTL(KC_W), KC_END,     LCTL(KC_R),  LCTL(KC_T),                             LCTL(KC_Y),  LCTL(KC_U),LCTL(KC_I),    MC_ENTO,     KC_UP,   JP_LBRC, \
   _______,      KC_HOME,    LCTL(KC_S), KC_DEL,     KC_RGHT,     LCTL(KC_G),                             KC_BSPC,     LCTL(KC_J),MC_DELK,       LCTL(KC_L),  KC_ENT,  JP_RBRC, \
   _______,      LCTL(KC_Z), LCTL(KC_X), LCTL(KC_C), LCTL(KC_V),  KC_LEFT,     KC_ENT,      KC_ENT,       KC_DOWN,     LCTL(KC_M),LCTL(KC_COMMA),LCTL(KC_DOT),JP_SLSH, JP_YEN, \
-                            _______,    _______,    _______,     LOWER_L,     RAISE_L,     KC_SPC,       KC_HENK,     _______,    _______,    _______\
+                            _______,    _______,    _______,     LOWER_L,  MC_RAISE_L,     LCTL(KC_SPC), KC_HENK,     _______,    _______,    _______\
 ),
 
 [_LOWER_R] = LAYOUT( \
@@ -142,7 +144,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   LCTL(KC_TAB), LCTL(KC_Q), LCTL(KC_W), KC_END,     LCTL(KC_R),  LCTL(KC_T),                             LCTL(KC_Y),  LCTL(KC_U),LCTL(KC_I),    MC_ENTO,     KC_UP,   JP_LBRC, \
   _______,      KC_HOME,    LCTL(KC_S), KC_DEL,     KC_RGHT,     LCTL(KC_G),                             KC_BSPC,     LCTL(KC_J),MC_DELK,       LCTL(KC_L),  KC_ENT,  JP_RBRC, \
   _______,      LCTL(KC_Z), LCTL(KC_X), LCTL(KC_C), LCTL(KC_V),  KC_LEFT,     KC_ENT,      KC_ENT,       KC_DOWN,     LCTL(KC_M),LCTL(KC_COMMA),LCTL(KC_DOT),JP_SLSH, JP_YEN, \
-                            _______,    _______,    _______,     KC_MHEN,     KC_SPC,      RAISE_R,      LOWER_R,     _______,    _______,    _______\
+                            _______,    _______,    _______,     KC_MHEN,     LCTL(KC_SPC),MC_RAISE_R,   LOWER_R,     _______,    _______,    _______\
 ),
 
 /* Raise
@@ -163,14 +165,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_TAB,    KC_F6,      KC_F7,      KC_F8,      KC_F9,     KC_F10,                             LCTL(KC_Y), LCTL(KC_U), LCTL(KC_U), MC_ENTO,     KC_PGUP, JP_LCBR, \
   _______,   KC_F11,     KC_F12,     MC_DEL,     MC_CRGHT,  LCTL(KC_L),                         MC_BCSP,    LCTL(KC_J), MC_DELK,    LCTL(KC_L),  KC_ENT,  JP_RCBR, \
   _______,   XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,   MC_CLEFT, KC_SPC,  KC_SPC,  KC_PGDN,    LCTL(KC_M), LCTL(KC_COMMA),LCTL(KC_DOT),       JP_QUES, JP_UNDS, \
-                         _______,    _______,    _______,   _______,  RAISE_L, LCTL(KC_SPC), _______, _______,   _______, _______\
+                         _______,    _______,    _______,   _______,  MC_RAISE_L, KC_SPC, _______, _______,   _______, _______\
 ),
 [_RAISE_R] = LAYOUT( \
   JP_TILD,   KC_F1,      KC_F2,      KC_F3,      KC_F4,     KC_F5,                              LCTL(KC_6), LCTL(KC_7), JP_LBRC,    JP_RBRC,     JP_TILD, JP_PIPE, \
   KC_TAB,    KC_F6,      KC_F7,      KC_F8,      KC_F9,     KC_F10,                             LCTL(KC_Y), LCTL(KC_U), LCTL(KC_U), MC_ENTO,     KC_PGUP, JP_LCBR, \
   _______,   KC_F11,     KC_F12,     MC_DEL,     MC_CRGHT,  LCTL(KC_L),                         MC_BCSP,    LCTL(KC_J), MC_DELK,    LCTL(KC_L),  KC_ENT,  JP_RCBR, \
   _______,   XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,   MC_CLEFT, KC_SPC,  KC_SPC,  KC_PGDN,    LCTL(KC_M), LCTL(KC_COMMA),LCTL(KC_DOT),       JP_QUES, JP_UNDS, \
-                         _______,    _______,    _______,   _______,  LCTL(KC_SPC), RAISE_R, _______, _______,   _______, _______\
+                         _______,    _______,    _______,   _______,  KC_SPC,  MC_RAISE_R, _______, _______,   _______, _______\
   ),
 
 /* Adjust (Lower + Raise)
@@ -200,7 +202,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   LCTL(KC_TAB), LGUI(KC_Q), LGUI(KC_W),  LCTL(KC_E), LGUI(KC_R), LGUI(KC_T),                       LGUI(LSFT(KC_Y)),  LGUI(KC_U), LGUI(KC_I), MC_ENTO,    KC_UP,   JP_LBRC, \
   KC_LCTRL,     LCTL(KC_A), LGUI(KC_S),  KC_DEL,     KC_RGHT,    LGUI(KC_G),                       KC_BSPC,           LGUI(KC_J), MC_DELK,    LGUI(KC_L), KC_ENT,  JP_RBRC, \
   _______,      LGUI(KC_Z), LGUI(KC_X),  LGUI(KC_C), LGUI(KC_V), KC_LEFT,  KC_ENT,   KC_ENT, KC_DOWN,           LGUI(KC_M), LGUI(KC_COMMA),LGUI(KC_DOT),JP_SLSH, JP_YEN, \
-                            _______,    _______,    _______,    LOWER_ML,  RAISE_L,  KC_SPC,     JP_MKANA,           _______,    _______,    _______\
+                            _______,    _______,    _______,    LOWER_ML,  MC_RAISE_L,  LCTL(KC_SPC), JP_MKANA,           _______,    _______,    _______\
 ),
     
 [_MAC_LOWER_R] = LAYOUT( \
@@ -208,7 +210,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   LCTL(KC_TAB), LGUI(KC_Q), LGUI(KC_W),  LCTL(KC_E), LGUI(KC_R), LGUI(KC_T),                       LGUI(LSFT(KC_Y)),  LGUI(KC_U), LGUI(KC_I), MC_ENTO,    KC_UP,   JP_LBRC, \
   KC_LCTRL,     LCTL(KC_A), LGUI(KC_S),  KC_DEL,     KC_RGHT,    LGUI(KC_G),                       KC_BSPC,           LGUI(KC_J), MC_DELK,    LGUI(KC_L), KC_ENT,  JP_RBRC, \
   _______,      LGUI(KC_Z), LGUI(KC_X),  LGUI(KC_C), LGUI(KC_V), KC_LEFT,  KC_ENT,    KC_ENT,  KC_DOWN,           LGUI(KC_M), LGUI(KC_COMMA),LGUI(KC_DOT),JP_SLSH, JP_YEN, \
-                            _______,    _______,    _______, JP_MEISU, KC_SPC, RAISE_R, LOWER_MR, _______,    _______,    _______\
+                            _______,    _______,    _______, JP_MEISU, LCTL(KC_SPC),  MC_RAISE_R, LOWER_MR, _______,    _______,    _______\
 ),
 
 };
@@ -239,7 +241,25 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       return state;
   }
 
+uint16_t custom_lt_timer = 0;
+keypos_t prv_key_pressed = {0,0};
+
   bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+      
+    inline void tap(uint16_t keycode) {
+      register_code(keycode);
+      unregister_code(keycode);
+    };
+
+    if (record->event.pressed) {
+      prv_key_pressed = record->event.key;
+      //set_keylog(keycode, record);
+      //set_timelog();
+    }
+
+#define IS_KEYPOS_SAME(keyone,keytwo)  ((keyone.col==keytwo.col)&&(keyone.row==keytwo.row))
+#define ANOTHER_KEY_PRESSED (!IS_KEYPOS_SAME(prv_key_pressed, record->event.key))
+
     switch (keycode) {
       case QWERTY:
         if (record->event.pressed) {
@@ -326,7 +346,31 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                 }
                 else
                 {
-                    SEND_STRING(SS_DOWN(X_LALT) SS_TAP(X_D) SS_UP(X_LALT));
+                    SEND_STRING(SS_DOWN(X_LALT) SS_TAP(X_DELETE) SS_UP(X_LALT));
+                }
+            }
+            break;
+            
+        case MC_RAISE_L:
+            if (record->event.pressed) {
+                custom_lt_timer = timer_read();
+                layer_on(_RAISE_L);
+            } else {
+                layer_off(_RAISE_L);
+                if (timer_elapsed(custom_lt_timer)<150 && (!ANOTHER_KEY_PRESSED)) {
+                    tap(KC_SPC);
+                }
+            }
+            break;
+            
+        case MC_RAISE_R:
+            if (record->event.pressed) {
+                custom_lt_timer = timer_read();
+                layer_on(_RAISE_R);
+            } else {
+                layer_off(_RAISE_R);
+                if (timer_elapsed(custom_lt_timer)<150 && (!ANOTHER_KEY_PRESSED)) {
+                    tap(KC_SPC);
                 }
             }
             break;

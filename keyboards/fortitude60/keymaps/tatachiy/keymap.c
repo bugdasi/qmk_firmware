@@ -41,14 +41,14 @@ enum custom_keycodes {
 #define _______ KC_TRNS
 #define XXXXXXX KC_NO
 
-#define LOWER_L MO(_LOWER_L) //LT(_LOWER, KC_MHEN)
-#define LOWER_R MO(_LOWER_R) //LT(_LOWER, KC_HENK)
+#define LOWER_L MO(_LOWER) //LT(_LOWER, KC_MHEN)
+#define LOWER_R MO(_LOWER) //LT(_LOWER, KC_HENK)
 #define RAISE_L LT(_RAISE_L, KC_SPC)
 #define RAISE_R LT(_RAISE_R, KC_SPC)
-#define CTL_L CTL_T(KC_ENT)
-#define CTL_R CTL_T(KC_ENT)
-#define CTL_ML GUI_T(KC_ENT)
-#define CTL_MR GUI_T(KC_ENT)
+#define CTL_L KC_LCTRL //CTL_T(KC_ENT)
+#define CTL_R KC_RCTRL //CTL_T(KC_ENT)
+#define CTL_ML KC_LGUI //GUI_T(KC_ENT)
+#define CTL_MR KC_RGUI //GUI_T(KC_ENT)
 #define EMACS MO(_LOWER_L)          // EMacs風
 #define SPC_ADJ LT(_ADJUST, KC_SPC)
 
@@ -58,8 +58,8 @@ enum custom_keycodes {
 #define ALT_KANA ALT_T(JP_MKANA)
 #define ALT_EISU ALT_T(JP_MEISU)
 
-#define LOWER_ML MO(_MAC_LOWER_L)//LT(_MAC_LOWER, JP_MEISU)
-#define LOWER_MR MO(_MAC_LOWER_R)//LT(_MAC_LOWER, JP_MKANA)
+#define LOWER_ML MO(_MAC_LOWER)//LT(_MAC_LOWER, JP_MEISU)
+#define LOWER_MR MO(_MAC_LOWER)//LT(_MAC_LOWER, JP_MKANA)
 
 #define KC_L1 KC_LGUI
 #define KC_L2 KC_LALT
@@ -80,8 +80,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_QWERTY] = LAYOUT( \
                        KC_ESC,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                            KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    JP_MINS, \
                        KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,                            KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    JP_AT, \
-                       KC_LCTRL,KC_A,    KC_S,    KC_D,    KC_F,    KC_G,                            KC_H,    KC_J,    KC_K,    KC_L,    JP_SCLN, JP_COLN, \
-                       KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,      KC_BSPC,   KC_BSPC,   KC_N,    KC_M,    JP_COMM, JP_DOT,  JP_SLSH, SFT_BSLS,\
+                       LOWER_L,KC_A,    KC_S,    KC_D,    KC_F,    KC_G,                            KC_H,    KC_J,    KC_K,    KC_L,    JP_SCLN, JP_COLN, \
+                       KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,      KC_ENT,   KC_ENT,   KC_N,    KC_M,    JP_COMM, JP_DOT,  JP_SLSH, SFT_BSLS,\
                                          KC_LGUI, KC_LALT, CTL_L,   MC_LOWER_L,MC_RAISE_L,MC_RAISE_R,MC_LOWER_R,CTL_R,   KC_RALT, KC_RGUI\
                        ),
     
@@ -89,15 +89,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                     KC_ESC,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                             KC_6,       KC_7,    KC_8,    KC_9,    KC_0,    JP_MINS, \
                     KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,                             KC_Y,       KC_U,    KC_I,    KC_O,    KC_P,    JP_AT, \
                     KC_LCTRL,KC_A,    KC_S,    KC_D,    KC_F,    KC_G,                             KC_H,       KC_J,    KC_K,    KC_L,    JP_SCLN, JP_COLN, \
-                    KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,       KC_BSPC,   KC_BSPC,   KC_N,       KC_M,    JP_COMM, JP_DOT,  JP_SLSH, SFT_UNDS, \
+                    KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,       KC_ENT,   KC_ENT,   KC_N,       KC_M,    JP_COMM, JP_DOT,  JP_SLSH, SFT_UNDS, \
                                       KC_LSFT, KC_LALT, CTL_ML,  MC_LOWER_ML,MC_RAISE_L,MC_RAISE_R,MC_LOWER_MR,CTL_MR,  KC_RALT, KC_RSFT\
                     ),
 
     [_LOWER] = LAYOUT( \
                       KC_ESC,       XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,  XXXXXXX,                             XXXXXXX,  XXXXXXX,XXXXXXX,    XXXXXXX,  XXXXXXX, XXXXXXX,\
                       LCTL(KC_TAB), XXXXXXX, XXXXXXX, KC_END,  XXXXXXX,  XXXXXXX,                             XXXXXXX,  XXXXXXX,XXXXXXX,    MC_ENTO,  KC_UP,   XXXXXXX, \
-                      _______,      KC_HOME, XXXXXXX, KC_DEL,  KC_RGHT,  XXXXXXX,                             KC_BSPC,  XXXXXXX,MC_DELK,    XXXXXXX,  XXXXXXX,  XXXXXXX, \
-                      _______,      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,  KC_LEFT,    KC_BSPC,    KC_BSPC,     KC_DOWN,  XXXXXXX,XXXXXXX,    XXXXXXX,  XXXXXXX, XXXXXXX, \
+                      _______,      KC_HOME, XXXXXXX, KC_DEL,  KC_RGHT,  XXXXXXX,                             KC_BSPC,  XXXXXXX,MC_DELK,    XXXXXXX,  KC_ENT,  XXXXXXX, \
+                      _______,      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,  KC_LEFT,    KC_ENT,    KC_ENT,     KC_DOWN,  XXXXXXX,XXXXXXX,    XXXXXXX,  XXXXXXX, XXXXXXX, \
                                              KC_LSFT, _______, _______,  _______,    _______,    _______, _______,     _______,    _______,      KC_RSFT\
                       ),
     
@@ -105,7 +105,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                       KC_ESC,   KC_F1,      KC_F2,      KC_F3,      KC_F4,     KC_F5,                             XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,     JP_CIRC, JP_YEN, \
                       KC_TAB,    KC_F6,      KC_F7,      KC_F8,      KC_F9,     KC_F10,                           XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,     KC_PGUP, JP_LBRC, \
                       _______,   KC_F11,     KC_F12,     MC_DEL,     MC_CRGHT,  XXXXXXX,                          MC_BCSP, XXXXXXX, MC_DELK, XXXXXXX,  XXXXXXX, JP_RBRC, \
-                      _______,   XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,   MC_CLEFT, KC_BSPC,  KC_BSPC,      KC_PGDN, XXXXXXX, XXXXXXX, XXXXXXX,     XXXXXXX, XXXXXXX, \
+                      _______,   XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,   MC_CLEFT, KC_ENT,  KC_ENT,      KC_PGDN, XXXXXXX, XXXXXXX, XXXXXXX,     XXXXXXX, XXXXXXX, \
                                              _______,    _______,    _______,   _______,  MC_RAISE_L, MC_RAISE_R, _______,    _______,    _______,    _______\
                       ),
     
@@ -121,8 +121,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_MAC_LOWER] = LAYOUT( \
                           KC_ESC,       XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                          XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, \
                           LCTL(KC_TAB), XXXXXXX, XXXXXXX, LCTL(KC_E), XXXXXXX, XXXXXXX,                       XXXXXXX, XXXXXXX, XXXXXXX, MC_ENTO, KC_UP,   XXXXXXX, \
-                          KC_LCTRL,     LCTL(KC_A), XXXXXXX,  KC_DEL,     KC_RGHT,    XXXXXXX,                KC_BSPC, XXXXXXX, MC_DELK, XXXXXXX, XXXXXXX, XXXXXXX, \
-                          _______,      XXXXXXX, XXXXXXX,  XXXXXXX, XXXXXXX, KC_LEFT,  KC_BSPC,      KC_BSPC, KC_DOWN, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, \
+                          KC_LCTRL,     LCTL(KC_A), XXXXXXX,  KC_DEL,     KC_RGHT,    XXXXXXX,                KC_BSPC, XXXXXXX, MC_DELK, XXXXXXX, KC_ENT, XXXXXXX, \
+                          _______,      XXXXXXX, XXXXXXX,  XXXXXXX, XXXXXXX, KC_LEFT,  KC_ENT,      KC_ENT, KC_DOWN, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, \
                                                  _______,  _______, _______, _______,  _______,      _______, _______, _______, _______, _______\
                           ),
     
